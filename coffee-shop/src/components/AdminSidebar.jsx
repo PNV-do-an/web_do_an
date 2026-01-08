@@ -77,16 +77,6 @@ const AdminSidebar = () => {
           ))}
         </ul>
       </nav>
-
-      <div className="position-absolute bottom-0 w-100 p-3 border-top">
-        <button
-          className="btn btn-outline-light w-100 d-flex align-items-center justify-content-center"
-          onClick={handleLogout}
-        >
-          <FaSignOutAlt className="me-2" />
-          Đăng xuất
-        </button>
-      </div>
     </div>
   );
 };

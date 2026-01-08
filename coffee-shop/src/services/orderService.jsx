@@ -11,7 +11,8 @@ import {
   getDoc,
   where,
   serverTimestamp,
-  Timestamp
+  Timestamp,
+  limit
 } from 'firebase/firestore';
 import { db } from './firebase';
 
@@ -214,4 +215,25 @@ export const getTopProducts = async (limit = 5) => {
     console.error('Error getting top products:', error);
     throw error;
   }
+};
+export const deleteOrder = async (orderId) => {
+  try {
+    await deleteDoc(doc(db, 'orders', orderId));
+    return true;
+  } catch (error) {
+    console.error('Lỗi xóa đơn hàng:', error);
+    throw error;
+  }
+};
+
+export default {
+  getOrderStats,
+  getRecentOrders,
+  getTopProducts,
+  createOrder,
+  getUserOrders,
+  getAllOrders,
+  getOrderById,
+  updateOrderStatus,
+  deleteOrder
 };

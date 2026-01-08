@@ -1,8 +1,9 @@
-// src/index.js - GIỮ LẠI
+// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';  // Sẽ tìm App.js hoặc App.jsx
+import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // QUAN TRỌNG!
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

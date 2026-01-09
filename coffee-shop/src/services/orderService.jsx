@@ -1,4 +1,4 @@
-// src/services/orderService.jsx
+// src/services/orderService.js - ĐÃ FIX THÔNG BÁO
 import {
   collection,
   query,
@@ -22,10 +22,14 @@ export const createOrder = async (orderData) => {
     const orderWithTimestamp = {
       ...orderData,
       createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp()
+      updatedAt: serverTimestamp(),
+      // Đảm bảo có orderNumber
+      orderNumber: orderData.orderNumber || `ORD${Date.now().toString().slice(-8)}`
     };
     
     const docRef = await addDoc(collection(db, 'orders'), orderWithTimestamp);
+    
+    console.log('✅ Đơn hàng được tạo với ID:', docRef.id);
     return docRef.id;
   } catch (error) {
     console.error('Lỗi tạo đơn hàng:', error);
@@ -149,7 +153,7 @@ export const getOrderStats = async () => {
       }
     });
     
-    // Lấy tổng số user (đơn giản - đếm số user trong orders)
+    // Lấy tổng số user
     const usersSet = new Set();
     ordersSnapshot.forEach((doc) => {
       const order = doc.data();
@@ -196,9 +200,8 @@ export const getRecentOrders = async (limit = 10) => {
     throw error;
   }
 };
-// src/services/orderService.js
-// THÊM HÀM NÀY VÀO CUỐI FILE
 
+// Lấy sản phẩm bán chạy
 export const getTopProducts = async (limit = 5) => {
   try {
     // Mock data tạm thời
@@ -216,6 +219,7 @@ export const getTopProducts = async (limit = 5) => {
     throw error;
   }
 };
+
 export const deleteOrder = async (orderId) => {
   try {
     await deleteDoc(doc(db, 'orders', orderId));

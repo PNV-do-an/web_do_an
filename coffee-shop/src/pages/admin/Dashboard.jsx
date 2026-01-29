@@ -230,7 +230,7 @@ const Dashboard = () => {
           <div className="card">
             <div className="card-header d-flex justify-content-between align-items-center">
               <h5 className="mb-0">Sản phẩm bán chạy</h5>
-              <span className="badge bg-primary">
+              <span className="badge bg-secondary">
                 {topProducts.length} sản phẩm
               </span>
             </div>
@@ -240,7 +240,7 @@ const Dashboard = () => {
                   {topProducts.map((product, index) => (
                     <li key={product.id} className="list-group-item d-flex justify-content-between align-items-center">
                       <div className="d-flex align-items-center">
-                        <span className="badge bg-primary me-2">{index + 1}</span>
+                        <span className="badge bg-secondary me-2">{index + 1}</span>
                         <div>
                           <div className="fw-bold">{product.name}</div>
                           <small className="text-muted">{formatPrice(product.price || 0)}</small>

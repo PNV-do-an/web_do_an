@@ -17,7 +17,8 @@ import {
   FaCheck,
   FaHome,
   FaStore,
-  FaUserTie
+  FaUserTie,
+  FaUsers
 } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { collection, query, where, onSnapshot, doc, updateDoc, orderBy } from 'firebase/firestore';
@@ -314,7 +315,6 @@ const Header = () => {
               </div>
               <div>
                 <h1 className="coffee-shop-title mb-0">Coffee House</h1>
-                <p className="coffee-tagline mb-0">Premium Coffee Experience</p>
               </div>
             </div>
           </Link>
@@ -507,6 +507,7 @@ const Header = () => {
                             className="coffee-menu-item"
                             onClick={() => setShowDropdown(false)}
                           >
+                            <FaStore className="me-2" />
                             <span>Quản lý sản phẩm</span>
                           </Link>
                           <Link 
@@ -514,21 +515,30 @@ const Header = () => {
                             className="coffee-menu-item"
                             onClick={() => setShowDropdown(false)}
                           >
+                            <FaShoppingCart className="me-2" />
                             <span>Quản lý đơn hàng</span>
+                          </Link>
+                          <Link 
+                            to="/admin/users" 
+                            className="coffee-menu-item"
+                            onClick={() => setShowDropdown(false)}
+                          >
+                            <FaUsers className="me-2" />
+                            <span>Quản lý người dùng</span>
                           </Link>
                         </>
                       )}
+                      
+                      <div 
+                        className="coffee-menu-item coffee-menu-logout"
+                        onClick={handleLogout}
+                        role="button"
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <FaSignOutAlt className="me-2" />
+                        <span>Đăng xuất</span>
+                      </div>
                     </div>
-                    
-                    <div className="coffee-menu-divider"></div>
-                    
-                    <button 
-                      className="coffee-menu-item coffee-menu-logout"
-                      onClick={handleLogout}
-                    >
-                      <FaSignOutAlt className="me-2" />
-                      <span>Đăng xuất</span>
-                    </button>
                   </div>
                 )}
               </div>

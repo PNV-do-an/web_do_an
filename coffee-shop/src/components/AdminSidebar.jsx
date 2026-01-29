@@ -10,7 +10,8 @@ import {
   FaUsers, 
   FaSignOutAlt,
   FaPlus,
-  FaList
+  FaList,
+  FaHome
 } from 'react-icons/fa';
 
 const AdminSidebar = () => {
@@ -54,21 +55,23 @@ const AdminSidebar = () => {
   ];
 
   return (
-    <div className="admin-sidebar bg-dark text-white" style={{ minHeight: '100vh', width: '250px' }}>
+    <div className="admin-sidebar bg-dark text-white d-flex flex-column" style={{ minHeight: '100vh', width: '250px' }}>
       <div className="p-3 border-bottom">
         <h4 className="mb-0">Admin Panel</h4>
         <small className="text-muted">Coffee Shop</small>
       </div>
 
-      <nav className="p-3">
+      <nav className="p-3 flex-grow-1">
         <ul className="nav nav-pills flex-column">
           {menuItems.map((item, index) => (
             <li className="nav-item mb-2" key={index}>
               <NavLink
                 to={item.path}
+                end={item.path === '/admin' || item.path === '/admin/products'}
                 className={({ isActive }) => 
-                  `nav-link text-white d-flex align-items-center ${isActive ? 'bg-primary' : ''}`
+                  `nav-link text-white d-flex align-items-center`
                 }
+                style={({ isActive }) => isActive ? { backgroundColor: '#D4A76A' } : {}}
               >
                 <span className="me-3">{item.icon}</span>
                 {item.name}
@@ -77,6 +80,23 @@ const AdminSidebar = () => {
           ))}
         </ul>
       </nav>
+
+      <div className="p-3 border-top">
+        <NavLink 
+          to="/" 
+          className="nav-link text-white d-flex align-items-center mb-3"
+        >
+          <span className="me-3"><FaHome /></span>
+          Xem trang web
+        </NavLink>
+        <button 
+          className="nav-link text-white d-flex align-items-center w-100 border-0 bg-transparent p-0"
+          onClick={handleLogout}
+        >
+          <span className="me-3"><FaSignOutAlt /></span>
+          Đăng xuất
+        </button>
+      </div>
     </div>
   );
 };

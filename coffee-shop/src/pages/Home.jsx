@@ -617,12 +617,12 @@ const Home = () => {
                 category: 'Cà phê truyền thống'
               },
               { 
-                image: 'https://images.unsplash.com/photo-1510707577719-ae7c9b788690?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
+                image: 'https://vinbarista.com/uploads/editer/images/blogs/ca-phe-pha-may-la-gi.jpg',
                 title: 'Cà phê máy',
                 category: 'Cà phê máy'
               },
               { 
-                image: 'https://images.unsplash.com/photo-1561034928-f076f61f32c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
+                image: 'https://huongtraviet.com/wp-content/uploads/2019/04/6-loai-tra-co-ban.jpg',
                 title: 'Trà các loại',
                 category: 'Trà'
               },
